@@ -1,0 +1,31 @@
+@use './colors' as *;
+@use './typography' as *;
+
+@each $color, $shades in $colors{
+    @each $shade, $value in $shades{
+        .bg-#{$color}-#{$shade}{
+           background-color: $value; 
+        }
+        .txt-#{$color}-#{$shade}{
+            color: $value;
+        }
+    }
+}
+
+@each $size, $value in $font-sizes{
+    .fs-#{$size}{
+        font-size: $value;
+    }
+}
+
+@each $weight, $value in $font-weights{
+    .fw-#{$weight}{
+        font-weight: $value;
+    }
+}
+
+@each $height, $value in $line-heights{
+    .lh-#{$height}{
+        line-height: $value;
+    }
+}

@@ -1,0 +1,226 @@
+@use "../../settings/mixins" as *;
+
+.navbarContr {
+  height: 80px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  box-shadow: 0px 5px 12px 0px rgba(100, 68, 0, 0.1);
+  background: transparent;
+  backdrop-filter: blur(7px);
+
+  .navbarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    z-index: 999;
+    transition: all 0.3s ease;
+
+    .logoContr {
+      z-index: 999;
+      height: 100%;
+      width: 95px;
+      padding: 10px;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    .xmark {
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      gap: 10px;
+      cursor: pointer;
+      span {
+        transition: all 0.3s ease;
+        width: 35px;
+        height: 4px;
+        border-radius: 5px;
+        background-color: var(--clr-primary-600);
+      }
+    }
+  }
+  .navItemsContr {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1000px;
+    background-color: var(--clr-primary-400);
+    padding: 50px 0;
+    transition: all 0.3s ease;
+    ul {
+      padding: 0 1rem;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+        padding: 10px 1.5rem;
+        border-radius: 1.8rem;
+        transition: all 0.3s ease;
+
+        &.isActiveLink {
+          background-color: var(--clr-primary-500);
+        }
+        &:hover {
+          span {
+            transform: translateX(4px);
+            scale: 0.95;
+          }
+        }
+        a {
+          text-align: start;
+          text-decoration: none;
+          color: var(--clr-neutral-600);
+          .labelContr {
+            border-bottom: none;
+            display: flex;
+            flex-direction: column;
+            font-size: var(--fs-h2);
+            font-weight: var(--fw-bold);
+            span {
+              transition: all 0.3s ease;
+            }
+            span:last-of-type {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .infoContr {
+      padding: 30px 20px;
+      z-index: 100;
+
+      p {
+        font-size: var(--fs-h3);
+        font-weight: var(--fw-bold);
+      }
+      .socialsContr {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+        padding: 40px 0;
+        gap: 15px;
+        a {
+          text-decoration: none;
+          color: var(--clr-neutral-600);
+          transition: all 0.3s ease;
+          &:hover {
+            scale: 0.9;
+          }
+        }
+      }
+    }
+  }
+  &.menuOpened {
+    background-color: var(--clr-primary-400);
+    height: 100vh;
+    .navbarHeader {
+      background-color: var(--clr-primary-400);
+      box-shadow: none;
+    }
+    .navItemsContr {
+      top: 80px;
+      bottom: 0;
+    }
+    .xmark {
+      span:first-of-type {
+        transform: translateY(7px) rotate(45deg);
+      }
+      span:last-of-type {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  .navbarContr {
+    display: flex;
+
+    .navbarHeader {
+      .xmark {
+        display: none;
+      }
+    }
+    .navItemsContr {
+      position: relative;
+      inset: auto;
+      padding: 0;
+      background: none;
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        li {
+          height: 100%;
+          padding: 0 10px;
+
+          a {
+            .labelContr {
+              font-size: var(--fs-large);
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+              height: 25px;
+              width: 5rem;
+
+              span:first-of-type {
+                position: absolute;
+                transform: translateY(0);
+                transition: all 0.3s ease;
+              }
+
+              span:last-of-type {
+                display: block;
+                position: absolute;
+                transform: translateY(100%);
+                transition: all 0.3s ease;
+              }
+            }
+          }
+          &.isActiveLink {
+            background: none;
+            a {
+              .labelContr {
+                border-bottom: 3px solid var(--clr-neutral-600);
+              }
+            }
+          }
+          &:hover {
+            a {
+              .labelContr {
+                span:first-of-type {
+                  transform: translateY(-100%);
+                }
+                span:last-of-type {
+                  transform: translateY(0);
+                }
+              }
+            }
+          }
+        }
+      }
+      .infoContr {
+        display: none;
+      }
+    }
+  }
+}

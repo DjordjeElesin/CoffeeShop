@@ -1,0 +1,50 @@
+@use "../../settings/mixins" as *;
+
+.news-item-contr {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    scale: 0.95;
+  }
+  .news-image-contr {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1.8rem;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .news-content-contr {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 0.5rem 2rem;
+
+    .date {
+      color: var(--clr-neutral-400);
+    }
+  }
+}
+
+@include breakpoint(medium) {
+  .news-item-contr {
+    
+    .news-image-contr {
+      aspect-ratio: 3.5 / 4;
+    }
+    .news-content-contr {
+      padding: 0.5rem 0;
+    }
+  }
+}

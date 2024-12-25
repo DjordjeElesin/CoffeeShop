@@ -1,0 +1,54 @@
+@use "../settings/mixins" as *;
+
+.news-page-contr {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  .embla {
+    --slide-size: 86%;
+    &::before {
+      background: none;
+    }
+    .embla__slide {
+      .text-overlay {
+        .news-content-contr {
+          .date {
+            color: var(--clr-primary-400);
+            font-weight: var(--fw-semibold);
+          }
+          h4 {
+            color: var(--clr-primary-400);
+          }
+        }
+      }
+    }
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 4%;
+
+    .news-list-contr{
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      width: 100%;
+    }
+  }
+}
+
+@include breakpoint(medium){
+  .news-page-contr{
+    main{
+      .news-list-contr{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: center;
+        align-items: start;
+        gap: 1rem;
+        
+      }
+    }
+  }
+} 

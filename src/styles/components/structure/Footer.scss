@@ -1,0 +1,87 @@
+@use "../../settings/mixins" as *;
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  border-radius: 2rem 2rem 0 0;
+  background-color: var(--clr-primary-400);
+  padding: 2rem 2.5rem;
+
+  .info-contr {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 2rem;
+    .logo {
+      width: 4rem;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  .socials-contr{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 3rem 0;
+    border-bottom: 2px solid var(--clr-neutral-600);
+  }
+
+  .map-contr {
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 2rem;
+    overflow: hidden;
+    margin: 3rem 0;
+  }
+
+  .copyright-contr{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.25rem;
+    font-size: var(--fs-small);
+    font-weight: var(--fw-semibold);
+  }
+}
+
+@include breakpoint(medium) {
+  footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 2rem;
+
+    .info-contr{
+      grid-column: 1;
+      grid-row: 1;
+      border-right: 2px solid var(--clr-neutral-600);
+    }
+    .map-contr{
+      grid-column: 2;
+      grid-row: 1;
+      height: 100%;
+      margin: 0;
+    }
+
+    .socials-contr{
+      padding: 0;
+      grid-column: 1;
+      grid-row: 2;
+      border-bottom: none;
+    }
+
+    .copyright-contr{
+      grid-column: 1;
+      grid-row: 3;
+      justify-content: start;
+    }
+  }
+}

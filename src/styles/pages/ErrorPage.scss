@@ -1,0 +1,46 @@
+@use "../settings/mixins" as *;
+
+.error-page-contr{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem 1rem;
+  width: 100%;
+  gap: 1.5rem;
+  text-align: center;
+  h1{
+    font-size: 3rem;
+    line-height: 50px;
+  }
+
+  .button-contr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem;
+  }
+}
+
+@include breakpoint(small){
+  .error-page-contr{
+    h1{
+      font-size: 5rem;
+      line-height: 80px;
+    }
+    .button-contr{
+      flex-direction: row;
+    }
+  }
+}
+/* 
+@include breakpoint(medium){
+  .error-page-contr{
+    h1{
+      font-size: 6rem;
+      line-height: 100px;
+    }
+  }
+} */
